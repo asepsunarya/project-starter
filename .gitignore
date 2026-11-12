@@ -1,0 +1,40 @@
+# Secrets and environment
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+.next/
+coverage/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Claude Code: per-user settings and hook caches
+.claude/settings.local.json
+.claude/sdd-cache/
+.claude/.simplify-ignore-cache/
+
+# Replica: screenshot app asli hanya referensi, tidak pernah di-ship.
+replica/screens/*
+!replica/screens/.gitkeep
+replica/diffs/*
+!replica/diffs/.gitkeep
+
+# Watermarks: file yang dibersihkan milik kamu, bukan bagian dari repo.
+work/in/*
+!work/in/.gitkeep
+work/out/*
+!work/out/.gitkeep
+*.cleaned.*
+*.bak

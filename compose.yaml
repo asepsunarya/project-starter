@@ -1,0 +1,27 @@
+# Core HTTP service saja. Skill remove-ai-marks bicara ke sini lewat
+# http://127.0.0.1:8765 (hanya loopback).
+#
+#   docker compose up --build -d
+#   curl -s http://127.0.0.1:8765/health
+
+name: project-starter
+
+services:
+  wr-core:
+    build:
+      context: service
+      dockerfile: Dockerfile
+    image: project-starter-wm-core:local
+    ports:
+      - "127.0.0.1:8765:8765"
+    environment:
+      # Kosong = tanpa auth. Isi untuk mewajibkan `Authorization: Bearer <key>`.
+      WATERMARKS_SERVER_API_KEY: ${WATERMARKS_SERVER_API_KEY:-}
+    volumes:
+      - ./config:/app/config:ro
+    read_only: true
+    tmpfs:
+      - /tmp
+    init: true
+    user: "10001:10001"
+    restart: unless-stopped
